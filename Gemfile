@@ -31,7 +31,9 @@ gem 'bootstrap-sass'
 
 gem 'devise'
 
-
+group :production do
+  gem 'pg'
+end
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -42,6 +44,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'sqlite3'
 end
 
 group :development do
