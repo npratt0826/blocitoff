@@ -31,6 +31,7 @@ gem 'bootstrap-sass'
 
 gem 'devise'
 gem 'sendgrid-ruby'
+gem 'figaro'
 
 group :production do
   gem 'pg'
