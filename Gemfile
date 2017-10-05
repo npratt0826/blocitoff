@@ -32,6 +32,7 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'sendgrid-ruby'
 gem 'figaro'
+gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 
 group :production do
   gem 'pg'
