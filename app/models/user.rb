@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   attr_accessor :login
-  has_many :items
+  has_many :items, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

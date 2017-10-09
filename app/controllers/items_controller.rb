@@ -1,21 +1,17 @@
 class ItemsController < ApplicationController
-  def index
-    @items = Item.all
-  end
 
   def new
-    @item = Item.new
-  end
-
-  def show
-    @item = Item.find(params[:id])
+    @user = User.find(params[:user_id])
+    @items = @user.items.all
+    @item = @items.new
+    user = @item.user
   end
 
   def create
-    @item = Item.new
-    @item.name = params[:item][:name]
+    @user = User.find(params[:user_id])
+    @item = @user.items.new(item_params)
     # @item.notes = params[:item][:notes]
-    @item.user = current_user
+    # @item.user = current_user
 
     if @item.save
       flash[:notice] = "Chore added"
@@ -24,6 +20,26 @@ class ItemsController < ApplicationController
       flash[:alert] = "There was an error, try again"
       render :new
     end
+  end
+
+  def destroy
+    @user = User.find(params[:user_id])
+    item = @user.items.find(params[:id])
+
+
+    if item.destroy
+      flash[:notice] = "Chore was completed successfully"
+      redirect_to current_user
+    else
+      flash[:alert] = "There was an error deleting the item"
+    end
+    puts "Item destroy from controller"
+  end
+
+  private
+
+  def item_params
+    params.require(:item).permit(:name)
   end
 
 end

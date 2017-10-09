@@ -6,17 +6,15 @@
   <p> Get em done, you are running out of time</p>
   <p class="lead">
   <div class="col-md-4">
-      <%= link_to "New Chore", new_user_item_path(@user, @item), class: 'btn btn-success' %>
+      <% if current_user %>
+        <%= link_to "New Chore", new_user_item_path(@user, @item), class: 'btn btn-success' %>
+      <% end %>
   </div>
   </p>
 </div>
 <div class="col-md-4">
     <h2> To-do List </h2>
     <p>
-      <% @items.each do |item| %>
-      <ul>
-        <li> <%= item.name %> </li>
-      </ul>
+      <%= render @user.items %>
     </p>
-    <% end %>
 </div>

@@ -5,6 +5,6 @@
      <p>Add another chore </p>
    </div>
    <div class="col-md-8">
-     <%= render partial: 'form', locals: { item: @item } %>
+     <%= render partial: 'form', item: Item.new, user: @user %>
    </div>
  </div>
