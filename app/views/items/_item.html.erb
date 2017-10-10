@@ -1,7 +1,11 @@
 <div class="media">
    <div class="media-body">
      <ul>
-       <li><p><%= item.name %> <%= link_to "complete", [@user, item], method: :delete, class: 'glyphicon glyphicon-ok' %></p></li>
+       <li><p><%= item.name %> <%= link_to "complete", [@user, item], method: :delete, class: 'glyphicon glyphicon-ok' %></p>
+         <small> <%= distance_of_time_in_words(item.created_at, item.created_at + 7.days) %> left </small>
+         <!-- <small> <%= item.countdown %> </small> -->
+       </li>
+
      </ul>
    </div>
 </div>

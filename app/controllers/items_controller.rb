@@ -29,12 +29,13 @@ class ItemsController < ApplicationController
 
     if item.destroy
       flash[:notice] = "Chore was completed successfully"
-      redirect_to current_user
+      redirect_to @user
     else
       flash[:alert] = "There was an error deleting the item"
     end
     puts "Item destroy from controller"
   end
+
 
   private
 
